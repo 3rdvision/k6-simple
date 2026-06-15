@@ -47,6 +47,28 @@ A **threshold with `abortOnFail`** stops the test early once the service is
 clearly broken — defined here as a request failure rate above **25% sustained
 for 15s**. The arrival rate at which this happens is the system's breakpoint.
 
+## Requirements
+
+You'll need the following installed locally:
+
+| Tool                | Why                                         | Install                                                                 |
+| ------------------- | ------------------------------------------- | ----------------------------------------------------------------------- |
+| **Docker**          | Runs the nginx target container.            | [docs.docker.com/get-docker](https://docs.docker.com/get-docker/)       |
+| **Docker Compose**  | Brings the target up/down from `docker-compose.yaml`. | Bundled with Docker Desktop; on Linux see [Compose install](https://docs.docker.com/compose/install/). |
+| **k6**              | Runs the load test (`test.js`).             | [grafana.com/docs/k6/latest/set-up/install-k6](https://grafana.com/docs/k6/latest/set-up/install-k6/) |
+
+Quick sanity check that everything is available:
+
+```sh
+docker --version
+docker compose version   # (or: docker-compose --version)
+k6 version
+```
+
+> **Note:** Recent Docker ships Compose as the `docker compose` subcommand.
+> If you have the older standalone binary, use `docker-compose` (with a hyphen)
+> in place of `docker compose` below.
+
 ## Running it
 
 ```sh
